@@ -1,0 +1,39 @@
+# GitHub -> JSM deployment tracking demo pipeline.
+# The production job deploys to the GitHub environment "production"; the GitHub for Atlassian app
+# reports the deployment to Jira and JSM auto-creates a change request for the mapped service.
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm test
+
+  deploy-staging:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to staging
+        run: echo "Deploying ${{ github.sha }} to staging"
+
+  deploy-production:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to production
+        run: echo "Deploying ${{ github.sha }} to production"
