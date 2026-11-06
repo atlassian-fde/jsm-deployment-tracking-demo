@@ -1,0 +1,11 @@
+{
+  "name": "jsm-deployment-tracking-demo",
+  "version": "1.0.0",
+  "description": "Demo service for GitHub -> JSM deployment tracking",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test test/"
+  },
+  "license": "UNLICENSED"
+}
