@@ -1,0 +1,7 @@
+# Maps this repo to a JSM service (deployment tracking).
+# Every deployment to a production-type GitHub environment auto-creates a change request
+# in the JSM space connected to this service.
+deployments:
+  services:
+    ids:
+    - b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlL2VkMjk2YjlmLTA4NGMtNDhlYi1iY2M4LTgwNDg4OGNhYWVmMS8wZGFhZGY4YS0wOGMwLTQxNmEtOTZmMy04OWQyNzg0YjgxYjM=
