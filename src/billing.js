@@ -1,6 +1,6 @@
 const { AMEX, isAmex } = require('./amex');
 
-const SUPPORTED_CARDS = ['visa', 'mastercard', AMEX];
+const SUPPORTED_CARDS = ['visa', 'mastercard', AMEX, 'discover'];
 
 function calculateInvoice(lineItems) {
   const subtotal = lineItems.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
