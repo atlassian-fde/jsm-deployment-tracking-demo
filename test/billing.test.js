@@ -18,3 +18,8 @@ test('supports amex with a 4-digit security code', () => {
   assert.strictEqual(cardSecurityCodeLength('amex'), 4);
   assert.strictEqual(cardSecurityCodeLength('visa'), 3);
 });
+
+test('supports discover with a 3-digit security code', () => {
+  assert.ok(isCardSupported('Discover'));
+  assert.strictEqual(cardSecurityCodeLength('discover'), 3);
+});
