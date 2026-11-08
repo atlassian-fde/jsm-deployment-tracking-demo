@@ -23,3 +23,14 @@ test('supports discover with a 3-digit security code', () => {
   assert.ok(isCardSupported('Discover'));
   assert.strictEqual(cardSecurityCodeLength('discover'), 3);
 });
+
+test('applies sales tax to the invoice total', () => {
+  const invoice = calculateInvoice([{ unitPrice: 100, quantity: 1 }], 0.0825);
+
+  assert.strictEqual(invoice.tax, 8.25);
+  assert.strictEqual(invoice.total, 108.25);
+});
+
+test('rejects an invalid tax rate', () => {
+  assert.throws(() => calculateInvoice([], 1.5), RangeError);
+});
